@@ -36,7 +36,7 @@ enum class Error {
   no_step_found;
 };
 
-class Linesearch {
+class LineSearch {
  public:
   virtual std::expected<Output, Error> run(const Input& input) const = 0;
 };
@@ -48,7 +48,7 @@ search.
 
 ```C
 namespace linesearch {
-class Backtracking {
+class Backtracking : public LineSearch{
  public:
   Output run(const Input& input) const override {
 
