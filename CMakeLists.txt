@@ -19,7 +19,12 @@ add_library(moe
     src/linesearch/Backtracking.cpp
     src/linesearch/Backtracking.hpp
     src/linesearch/Base.cpp
+    src/linesearch/Children.cpp
+    src/linesearch/Children.hpp
     src/linesearch/Base.hpp
+    src/firstorder/Base.hpp
+    src/firstorder/GradientDescent.hpp
+    src/firstorder/GradientDescent.cpp
 )
 
 target_include_directories(moe

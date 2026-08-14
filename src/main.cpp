@@ -3,6 +3,8 @@
 #include <functional>
 
 #include "linesearch/Base.hpp"
+#include "firstorder/Base.hpp"
+#include "firstorder/GradientDescent.hpp"
 
 int main() 
 {

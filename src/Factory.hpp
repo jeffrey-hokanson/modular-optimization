@@ -1,10 +1,18 @@
 #pragma once
 
+#include <type_traits>
 #include <variant>
 
 #include <glaze/glaze.hpp>
 
 namespace moe {
+
+template<typename BaseType, typename T>
+inline constexpr bool all_variant_types_derive_from = false;
+
+template<typename BaseType, typename... Ts>
+inline constexpr bool all_variant_types_derive_from<BaseType, std::variant<Ts...>> = 
+    (std::is_base_of_v<BaseType, Ts> && ...);
 
 
 template<typename Parent, typename Children>
