@@ -1,3 +1,4 @@
+#pragma once
 #include "linesearch/Linesearch.hpp"
 
 namespace moe::linesearch {
