@@ -16,14 +16,16 @@ find_package(glaze CONFIG REQUIRED)
 find_package(Eigen3 CONFIG REQUIRED)
 
 add_library(moe
-    src/moe.cpp
-    src/moe.hpp
+    src/linesearch/Backtracking.cpp
+    src/linesearch/Backtracking.hpp
+    src/linesearch/Linesearch.hpp
 )
 
 target_include_directories(moe
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 target_compile_features(moe PUBLIC cxx_std_26)
