@@ -18,7 +18,8 @@ find_package(Eigen3 CONFIG REQUIRED)
 add_library(moe
     src/linesearch/Backtracking.cpp
     src/linesearch/Backtracking.hpp
-    src/linesearch/Linesearch.hpp
+    src/linesearch/Base.cpp
+    src/linesearch/Base.hpp
 )
 
 target_include_directories(moe
@@ -39,6 +40,11 @@ target_compile_options(moe PUBLIC
 )
 
 target_link_libraries(moe PUBLIC glaze::glaze Eigen3::Eigen)
+
+add_executable(main "src/main.cpp")
+target_link_libraries(main PUBLIC moe)
+target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 
 install(TARGETS moe
     LIBRARY DESTINATION lib

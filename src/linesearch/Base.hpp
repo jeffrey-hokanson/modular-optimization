@@ -1,6 +1,8 @@
 #pragma once
 #include <expected>
+#include <memory>
 #include <functional>
+#include <string_view>
 
 namespace moe::linesearch {
 
@@ -17,9 +19,13 @@ enum class Error {
   step_too_small 
 };
 
-class LineSearch {
+class Base {
  public:
   virtual std::expected<Output, Error> run(const Input& input) const = 0;
+
 };
+
+// helper methods
+std::unique_ptr<Base> fromJson(std::string_view json);
 
 }// namespace moe::linesearch

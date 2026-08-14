@@ -1,9 +1,9 @@
 #pragma once
-#include "linesearch/Linesearch.hpp"
+#include "linesearch/Base.hpp"
 
 namespace moe::linesearch {
 
-class Backtracking : public LineSearch{
+class Backtracking : public Base{
  public:
    std::expected<Output, Error> run(const Input& input) const override;
   
