@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 project(moe LANGUAGES CXX)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Require the GCC 16+ reflection-capable toolchain.
 if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_LESS 16)
     message(WARNING "This project expects GCC 16+ for C++26 reflection support "
