@@ -14,6 +14,12 @@
         # Build a stdenv that uses gcc16 as the compiler.
         gcc16Stdenv = pkgs.overrideCC pkgs.stdenv pkgs.gcc16;
 
+        # gtest MUST be built with the same stdenv as everything else,
+        # or you'll get ABI mismatches (mangled symbol mismatches, or
+        # worse, heap corruption from two different C++ runtimes in
+        # one binary). Define this once and reuse it everywhere.
+        gtest16 = pkgs.gtest.override { stdenv = gcc16Stdenv; };
+
         # Glaze 7.9.1
         glazeSrc = pkgs.fetchFromGitHub {
           owner = "stephenberry";
@@ -48,7 +54,7 @@
           src = ./.;
 
           nativeBuildInputs = [ pkgs.cmake ];
-          buildInputs = [ glaze pkgs.eigen];
+          buildInputs = [ glaze pkgs.eigen gtest16 ];
         };
 
       in {
@@ -66,7 +72,7 @@
             pkgs.gdb
           ];
 
-          buildInputs = [ glaze pkgs.eigen ];
+          buildInputs = [ glaze pkgs.eigen gtest16 ];
         };
       });
 }

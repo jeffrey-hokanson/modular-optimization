@@ -56,3 +56,25 @@ install(TARGETS moe
     ARCHIVE DESTINATION lib
 )
 install(DIRECTORY include/ DESTINATION include)
+
+# Testing
+option(BUILD_TESTING "Build tests" ON)
+if(BUILD_TESTING)
+  enable_testing()
+  find_package(GTest REQUIRED)
+
+  add_executable(unit_tests
+    src/test.cpp
+  )
+
+  target_link_libraries(unit_tests
+    PRIVATE
+    moe
+    GTest::gtest
+    GTest::gtest_main
+  )
+
+  include(GoogleTest)
+  # gtest_discover_tests(unit_tests)
+
+endif()

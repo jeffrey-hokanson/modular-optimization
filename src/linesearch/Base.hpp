@@ -6,8 +6,6 @@
 
 #include <Eigen/Dense>
 
-#include "Types.hpp"
-
 namespace moe::linesearch {
 
 struct Input {
