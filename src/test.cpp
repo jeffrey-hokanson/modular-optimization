@@ -17,4 +17,9 @@ TEST(SanityCheck, Basic) {
   auto wrapped_objective = prob.getObjective();
   wrapped_objective(x);
   EXPECT_EQ(prob.objectiveCalls(), 1);
+
+  // check that repeated calls for the same values are identical
+  wrapped_objective(x);
+  EXPECT_EQ(prob.objectiveCalls(), 1);
 }
+
